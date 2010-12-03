@@ -32,6 +32,7 @@
 
 #include <fizmo/interpreter/fizmo.h>
 #include <fizmo/interpreter/text.h>
+#include <fizmo/interpreter/streams.h>
 #include <fizmo/tools/types.h>
 #include <fizmo/tools/i18n.h>
 #include <fizmo/tools/tracelog.h>
@@ -231,7 +232,9 @@ struct z_screen_interface simple_c_interface =
 
 int main(int argc, char *argv[])
 {
+#ifdef ENABLE_TRACING
   turn_on_trace();
+#endif // ENABLE_TRACING
 
   fizmo_register_screen_interface(&simple_c_interface);
 
