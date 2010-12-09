@@ -11,7 +11,7 @@ LIB_DIRS = $(LIBFIZMO_LIB_DIRS)
 LIBS = $(LIBFIZMO_LIBS)
 
 fizmo-console: fizmo-console.o
-	$(CC) $(CFLAGS) $(LIB_DIRS) $(LIBS) fizmo-console.o -o fizmo-console
+	$(CC) $(CFLAGS) $(LIB_DIRS) fizmo-console.o -o fizmo-console $(LIBS)
 	#strip fizmo
 
 fizmo-console.o: fizmo-console.c
@@ -21,5 +21,5 @@ clean:
 	rm -f *.o
 
 distclean: clean
-	rm fizmo-console
+	rm -f fizmo-console
 
