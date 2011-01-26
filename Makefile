@@ -12,7 +12,7 @@ endif
 
 all: src/fizmo-console/fizmo-console
 
-src/fizmo-console/fizmo-console:
+src/fizmo-console/fizmo-console::
 	cd src/fizmo-console ; make
 
 install: src/fizmo-console/fizmo-console

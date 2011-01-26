@@ -10,3 +10,6 @@ FIZMO_LIB_DIR = $(INSTALL_PREFIX)/lib
 # Uncomment to fill your harddisk _very_ fast:
 #ENABLE_TRACING = 1
 
+# If you have termios.h available, uncomment to enable read_char without Enter:
+#ENABLE_READCHAR_VIA_TERMIOS = 1
+
