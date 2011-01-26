@@ -30,6 +30,12 @@
  */
 
 
+#ifdef ENABLE_READCHAR_VIA_TERMIOS
+#include <termios.h>
+#include <unistd.h>
+#include <string.h>
+#endif // ENABLE_READCHAR_VIA_TERMIOS
+
 #include <fizmo/interpreter/fizmo.h>
 #include <fizmo/interpreter/text.h>
 #include <fizmo/interpreter/streams.h>
@@ -37,7 +43,7 @@
 #include <fizmo/tools/i18n.h>
 #include <fizmo/tools/tracelog.h>
 
-static char* interface_name = "simple-c";
+static char* interface_name = "fizmo-console";
 static char* interface_version = "0.7.0-b3";
 
 char *simple_c_get_interface_name()
@@ -132,7 +138,53 @@ int16_t simple_c_interface_read_line(zscii *dest, uint16_t maximum_length,
 int simple_c_interface_read_char(uint16_t tenth_seconds,
     uint32_t verification_routine, int *tenth_seconds_elapsed)
 {
-  exit(-1);
+  int result;
+
+#ifdef ENABLE_READCHAR_VIA_TERMIOS
+
+  struct termios org_opts, new_opts;
+
+  tcgetattr(STDIN_FILENO, &org_opts);
+  memcpy(&new_opts, &org_opts, sizeof(new_opts));
+  new_opts.c_lflag
+    &= ~(ICANON | ECHO | ECHOE | ECHOK | ECHONL | ECHOPRT | ECHOKE | ICRNL);
+  tcsetattr(STDIN_FILENO, TCSANOW, &new_opts);
+  result = getchar();
+  result = unicode_char_to_zscii_input_char(result & 0xff);
+  if (result == 0xff)
+    result = -1;
+  tcsetattr(STDIN_FILENO, TCSANOW, &org_opts);
+
+  return result;
+
+#else
+
+  zscii input_zscii;
+  int input;
+
+  if ((input = fgetc(stdin)) == EOF)
+    exit(-1);
+
+  result = -1;
+
+  while ((input != 10) && (input != 13))
+  {
+    if (result == -1)
+    {
+      if ((input_zscii=unicode_char_to_zscii_input_char(input & 0xff)) != 0xff)
+        result = input_zscii;
+    }
+
+    if ((input = fgetc(stdin)) == EOF)
+      exit(-1);
+  }
+
+  if (result == -1)
+    result = 10;
+
+#endif // ENABLE_READCHAR_VIA_TERMIOS
+
+  return result;
 }
 
 void simple_c_show_status(z_ucs *room_description, int status_line_mode,
