@@ -44,7 +44,7 @@
 #include <fizmo/tools/tracelog.h>
 
 static char* interface_name = "fizmo-console";
-static char* interface_version = "0.7.0-b3";
+static char* interface_version = "0.7.0-b4";
 
 char *simple_c_get_interface_name()
 { return interface_name; }
