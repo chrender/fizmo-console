@@ -1,15 +1,20 @@
 
-CC = gcc -Wall
-CFLAGS = -g -O2
+CC = gcc
+AR = ar
+CFLAGS = -Wall -Wextra
 
+ifneq ($(DESTDIR),)
+INSTALL_PREFIX = $(DESTDIR)
+else
+#INSTALL_PREFIX = /usr/local
 INSTALL_PREFIX = $(HOME)/opt/fizmo
+endif
 
-FIZMO_INC_DIR = $(INSTALL_PREFIX)/include
-FIZMO_LIB_DIR = $(INSTALL_PREFIX)/lib
+# Uncomment to install binaries to $(INSTALL_PREFIX)/$(FIZMO_BIN_DIR).
+#FIZMO_BIN_DIR = bin
 
-# Uncomment to fill your harddisk _very_ fast:
+# General:
+ENABLE_OPTIMIZATION = 1
 #ENABLE_TRACING = 1
-
-# If you have termios.h available, uncomment to enable read_char without Enter:
-#ENABLE_READCHAR_VIA_TERMIOS = 1
+#ENABLE_GDB_SYMBOLS = 1
 

@@ -36,15 +36,16 @@
 #include <string.h>
 #endif // ENABLE_READCHAR_VIA_TERMIOS
 
-#include <fizmo/interpreter/fizmo.h>
-#include <fizmo/interpreter/text.h>
-#include <fizmo/interpreter/streams.h>
-#include <fizmo/tools/types.h>
-#include <fizmo/tools/i18n.h>
-#include <fizmo/tools/tracelog.h>
+#include <interpreter/fizmo.h>
+#include <interpreter/text.h>
+#include <interpreter/streams.h>
+#include <tools/unused.h>
+#include <tools/types.h>
+#include <tools/i18n.h>
+#include <tools/tracelog.h>
 
 static char* interface_name = "fizmo-console";
-static char* interface_version = "0.7.0-b4";
+static char* interface_version = "0.7.0-b5";
 
 char *simple_c_get_interface_name()
 { return interface_name; }
@@ -73,19 +74,19 @@ z_colour simple_c_get_default_background_colour()
 uint8_t simple_c_return_0()
 { return 0; }
 
-int simple_c_parse_config_parameter(char *key, char *value)
+int simple_c_parse_config_parameter(char *UNUSED(key), char *UNUSED(value))
 { return 1; }
 
-void simple_c_link_interface_to_story(struct z_story *story)
+void simple_c_link_interface_to_story(struct z_story *UNUSED(story))
 { }
 
 void simple_c_reset_interface()
 { }
 
-int simple_c_close_interface(z_ucs *error_message)
+int simple_c_close_interface(z_ucs *UNUSED(error_message))
 { return 0; }
 
-void simple_c_set_buffer_mode(uint8_t new_buffer_mode)
+void simple_c_set_buffer_mode(uint8_t UNUSED(new_buffer_mode))
 { }
 
 void simple_c_interface_output_z_ucs(z_ucs *z_ucs_output)
@@ -102,9 +103,9 @@ void simple_c_interface_output_z_ucs(z_ucs *z_ucs_output)
 }
 
 int16_t simple_c_interface_read_line(zscii *dest, uint16_t maximum_length,
-    uint16_t tenth_seconds, uint32_t verification_routine,
-    uint8_t preloaded_input, int *tenth_seconds_elapsed,
-    bool disable_command_history, bool return_on_escape)
+    uint16_t UNUSED(tenth_seconds), uint32_t UNUSED(verification_routine),
+    uint8_t UNUSED(preloaded_input), int *UNUSED(tenth_seconds_elapsed),
+    bool UNUSED(disable_command_history), bool UNUSED(return_on_escape))
 {
   int input;
   int current_length = 0;
@@ -135,8 +136,8 @@ int16_t simple_c_interface_read_line(zscii *dest, uint16_t maximum_length,
   return input_size;
 }
 
-int simple_c_interface_read_char(uint16_t tenth_seconds,
-    uint32_t verification_routine, int *tenth_seconds_elapsed)
+int simple_c_interface_read_char(uint16_t UNUSED(tenth_seconds),
+    uint32_t UNUSED(verification_routine), int *UNUSED(tenth_seconds_elapsed))
 {
   int result;
 
@@ -187,30 +188,32 @@ int simple_c_interface_read_char(uint16_t tenth_seconds,
   return result;
 }
 
-void simple_c_show_status(z_ucs *room_description, int status_line_mode,
-    int16_t parameter1, int16_t parameter2)
+void simple_c_show_status(z_ucs *UNUSED(room_description),
+    int UNUSED(status_line_mode), int16_t UNUSED(parameter1),
+    int16_t UNUSED(parameter2))
 { }
 
-void simple_c_set_text_style(z_style text_style)
+void simple_c_set_text_style(z_style UNUSED(text_style))
 { }
 
-void simple_c_set_colour(z_colour foreground, z_colour background,
-    int16_t window)
+void simple_c_set_colour(z_colour UNUSED(foreground),
+    z_colour UNUSED(background), int16_t UNUSED(window))
 { }
 
-void simple_c_set_font(z_font font_type)
+void simple_c_set_font(z_font UNUSED(font_type))
 { }
 
-void simple_c_split_window(int16_t nof_lines)
+void simple_c_split_window(int16_t UNUSED(nof_lines))
 { }
 
-void simple_c_set_window(int16_t window_number)
+void simple_c_set_window(int16_t UNUSED(window_number))
 { }
 
-void simple_c_erase_window(int16_t window_number)
+void simple_c_erase_window(int16_t UNUSED(window_number))
 { }
 
-void simple_c_set_cursor(int16_t line, int16_t column, int16_t window)
+void simple_c_set_cursor(int16_t UNUSED(line), int16_t UNUSED(column),
+    int16_t UNUSED(window))
 { }
 
 uint16_t simple_c_get_cursor_row()
@@ -219,10 +222,10 @@ uint16_t simple_c_get_cursor_row()
 uint16_t simple_c_get_cursor_column()
 { return 0;}
 
-void simple_c_erase_line_value(uint16_t start_position)
+void simple_c_erase_line_value(uint16_t UNUSED(start_position))
 { }
 
-void simple_c_erase_line_pixels(uint16_t start_position)
+void simple_c_erase_line_pixels(uint16_t UNUSED(start_position))
 { }
 
 void simple_c_output_interface_info()
@@ -232,6 +235,9 @@ void simple_c_output_interface_info()
   (void)streams_latin1_output(interface_version);
   (void)streams_latin1_output("\n");
 }
+
+void simple_c_game_was_restored_and_history_modified()
+{ }
 
 struct z_screen_interface simple_c_interface =
 {
@@ -278,7 +284,8 @@ struct z_screen_interface simple_c_interface =
   &simple_c_erase_line_value,
   &simple_c_erase_line_pixels,
   &simple_c_output_interface_info,
-  &simple_c_return_false
+  &simple_c_return_false,
+  &simple_c_game_was_restored_and_history_modified
 };
 
 
