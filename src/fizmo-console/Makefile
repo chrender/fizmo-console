@@ -10,7 +10,8 @@ override CFLAGS += -DENABLE_READCHAR_VIA_TERMIOS=
 endif
 
 override CFLAGS += $(shell pkg-config --cflags libfizmo)
-LIBS = $(shell pkg-config --libs libfizmo)
+LIBS = -lm
+LIBS += $(shell pkg-config --libs libfizmo)
 
 fizmo-console: fizmo-console.o
 	$(CC) $(CFLAGS) fizmo-console.o -o fizmo-console $(LIBS)
