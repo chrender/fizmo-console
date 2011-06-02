@@ -47,49 +47,56 @@
 static char* interface_name = "fizmo-console";
 static char* interface_version = "0.7.0-b5";
 
-char *simple_c_get_interface_name()
+static char *simple_c_get_interface_name()
 { return interface_name; }
 
-bool simple_c_return_false()
+static bool simple_c_return_false()
 { return false; }
 
-bool simple_c_return_true()
+static bool simple_c_return_true()
 { return true; }
 
-uint8_t simple_c_get_screen_height()
+static uint8_t simple_c_get_screen_height()
 { return 24; }
 
-uint8_t simple_c_get_screen_width()
+static uint8_t simple_c_get_screen_width()
 { return 80; }
 
-uint8_t simple_c_return_1()
+static uint8_t simple_c_return_1()
 { return 1; }
 
-z_colour simple_c_get_default_foreground_colour()
+static z_colour simple_c_get_default_foreground_colour()
 { return Z_COLOUR_BLACK; }
 
-z_colour simple_c_get_default_background_colour()
+static z_colour simple_c_get_default_background_colour()
 { return Z_COLOUR_WHITE; }
 
-uint8_t simple_c_return_0()
+static uint8_t simple_c_return_0()
 { return 0; }
 
-int simple_c_parse_config_parameter(char *UNUSED(key), char *UNUSED(value))
+static int simple_c_parse_config_parameter(char *UNUSED(key),
+    char *UNUSED(value))
 { return 1; }
 
-void simple_c_link_interface_to_story(struct z_story *UNUSED(story))
+static char *simple_c_get_config_value(char *UNUSED(key))
+{ return NULL; }
+
+static char **simple_c_get_config_option_names()
+{ return NULL; }
+
+static void simple_c_link_interface_to_story(struct z_story *UNUSED(story))
 { }
 
-void simple_c_reset_interface()
+static void simple_c_reset_interface()
 { }
 
-int simple_c_close_interface(z_ucs *UNUSED(error_message))
+static int simple_c_close_interface(z_ucs *UNUSED(error_message))
 { return 0; }
 
-void simple_c_set_buffer_mode(uint8_t UNUSED(new_buffer_mode))
+static void simple_c_set_buffer_mode(uint8_t UNUSED(new_buffer_mode))
 { }
 
-void simple_c_interface_output_z_ucs(z_ucs *z_ucs_output)
+static void simple_c_interface_output_z_ucs(z_ucs *z_ucs_output)
 {
   while (*z_ucs_output != 0)
   {
@@ -102,10 +109,11 @@ void simple_c_interface_output_z_ucs(z_ucs *z_ucs_output)
   }
 }
 
-int16_t simple_c_interface_read_line(zscii *dest, uint16_t maximum_length,
-    uint16_t UNUSED(tenth_seconds), uint32_t UNUSED(verification_routine),
-    uint8_t UNUSED(preloaded_input), int *UNUSED(tenth_seconds_elapsed),
-    bool UNUSED(disable_command_history), bool UNUSED(return_on_escape))
+static int16_t simple_c_interface_read_line(zscii *dest,
+    uint16_t maximum_length, uint16_t UNUSED(tenth_seconds),
+    uint32_t UNUSED(verification_routine), uint8_t UNUSED(preloaded_input),
+    int *UNUSED(tenth_seconds_elapsed), bool UNUSED(disable_command_history),
+    bool UNUSED(return_on_escape))
 {
   int input;
   int current_length = 0;
@@ -136,7 +144,7 @@ int16_t simple_c_interface_read_line(zscii *dest, uint16_t maximum_length,
   return input_size;
 }
 
-int simple_c_interface_read_char(uint16_t UNUSED(tenth_seconds),
+static int simple_c_interface_read_char(uint16_t UNUSED(tenth_seconds),
     uint32_t UNUSED(verification_routine), int *UNUSED(tenth_seconds_elapsed))
 {
   int result;
@@ -188,47 +196,47 @@ int simple_c_interface_read_char(uint16_t UNUSED(tenth_seconds),
   return result;
 }
 
-void simple_c_show_status(z_ucs *UNUSED(room_description),
+static void simple_c_show_status(z_ucs *UNUSED(room_description),
     int UNUSED(status_line_mode), int16_t UNUSED(parameter1),
     int16_t UNUSED(parameter2))
 { }
 
-void simple_c_set_text_style(z_style UNUSED(text_style))
+static void simple_c_set_text_style(z_style UNUSED(text_style))
 { }
 
-void simple_c_set_colour(z_colour UNUSED(foreground),
+static void simple_c_set_colour(z_colour UNUSED(foreground),
     z_colour UNUSED(background), int16_t UNUSED(window))
 { }
 
-void simple_c_set_font(z_font UNUSED(font_type))
+static void simple_c_set_font(z_font UNUSED(font_type))
 { }
 
-void simple_c_split_window(int16_t UNUSED(nof_lines))
+static void simple_c_split_window(int16_t UNUSED(nof_lines))
 { }
 
-void simple_c_set_window(int16_t UNUSED(window_number))
+static void simple_c_set_window(int16_t UNUSED(window_number))
 { }
 
-void simple_c_erase_window(int16_t UNUSED(window_number))
+static void simple_c_erase_window(int16_t UNUSED(window_number))
 { }
 
-void simple_c_set_cursor(int16_t UNUSED(line), int16_t UNUSED(column),
+static void simple_c_set_cursor(int16_t UNUSED(line), int16_t UNUSED(column),
     int16_t UNUSED(window))
 { }
 
-uint16_t simple_c_get_cursor_row()
+static uint16_t simple_c_get_cursor_row()
 { return 0; }
 
-uint16_t simple_c_get_cursor_column()
+static uint16_t simple_c_get_cursor_column()
 { return 0;}
 
-void simple_c_erase_line_value(uint16_t UNUSED(start_position))
+static void simple_c_erase_line_value(uint16_t UNUSED(start_position))
 { }
 
-void simple_c_erase_line_pixels(uint16_t UNUSED(start_position))
+static void simple_c_erase_line_pixels(uint16_t UNUSED(start_position))
 { }
 
-void simple_c_output_interface_info()
+static void simple_c_output_interface_info()
 {
   (void)streams_latin1_output(interface_name);
   (void)streams_latin1_output(" interface version ");
@@ -236,7 +244,7 @@ void simple_c_output_interface_info()
   (void)streams_latin1_output("\n");
 }
 
-void simple_c_game_was_restored_and_history_modified()
+static void simple_c_game_was_restored_and_history_modified()
 { }
 
 struct z_screen_interface simple_c_interface =
@@ -264,6 +272,8 @@ struct z_screen_interface simple_c_interface =
   &simple_c_get_default_background_colour,
   &simple_c_return_0,
   &simple_c_parse_config_parameter,
+  &simple_c_get_config_value,
+  &simple_c_get_config_option_names,
   &simple_c_link_interface_to_story,
   &simple_c_reset_interface,
   &simple_c_close_interface,
