@@ -13,8 +13,11 @@ endif
 # Uncomment to install binaries to $(INSTALL_PREFIX)/$(FIZMO_BIN_DIR).
 #FIZMO_BIN_DIR = bin
 
-# General:
+
+# -----
+# General settings:
 ENABLE_OPTIMIZATION = 1
 #ENABLE_TRACING = 1
 #ENABLE_GDB_SYMBOLS = 1
+# -----
 
