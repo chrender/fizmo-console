@@ -301,6 +301,7 @@ struct z_screen_interface simple_c_interface =
 
 int main(int argc, char *argv[])
 {
+  z_file *story_stream;
 #ifdef ENABLE_TRACING
   turn_on_trace();
 #endif // ENABLE_TRACING
@@ -310,8 +311,16 @@ int main(int argc, char *argv[])
   if (argc != 2)
     exit(1);
 
-  fizmo_start(argv[1], NULL, NULL);
-
-  return 0;
+  if ((story_stream
+      = fsi->openfile(argv[1], FILETYPE_DATA, FILEACCESS_READ)) == NULL)
+  {
+    printf("Could not open file \"%s\".\n", argv[1]);
+    return 1;
+  }
+  else
+  {
+    fizmo_start(story_stream, NULL, NULL);
+    return 0;
+  }
 }
 
