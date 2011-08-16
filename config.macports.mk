@@ -21,3 +21,10 @@ ENABLE_OPTIMIZATION = 1
 #ENABLE_GDB_SYMBOLS = 1
 # -----
 
+
+
+# -----
+# Settings for fizmo-console
+ENABLE_READCHAR_VIA_TERMIOS = 1
+# -----
+
