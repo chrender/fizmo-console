@@ -1,9 +1,9 @@
 
-/* simple_c.c
+/* fizmo_console.c
  *
  * This file is part of fizmo.
  *
- * Copyright (c) 2010 Christoph Ender.
+ * Copyright (c) 2009-2011 Christoph Ender.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@
 #include <tools/tracelog.h>
 
 static char* interface_name = "fizmo-console";
-static char* interface_version = "0.7.0-b6";
+static char* interface_version = "0.7.0-b7";
 
 static char *simple_c_get_interface_name()
 { return interface_name; }
