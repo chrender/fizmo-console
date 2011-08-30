@@ -34,11 +34,13 @@
 #include <termios.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 #endif // ENABLE_READCHAR_VIA_TERMIOS
 
 #include <interpreter/fizmo.h>
 #include <interpreter/text.h>
 #include <interpreter/streams.h>
+#include <interpreter/wordwrap.h>
 #include <tools/unused.h>
 #include <tools/types.h>
 #include <tools/i18n.h>
@@ -46,6 +48,10 @@
 
 static char* interface_name = "fizmo-console";
 static char* interface_version = "0.7.0-b7";
+int line_length = -1;
+bool disable_hyphenation = false;
+static WORDWRAP *output_wordwrapper;
+
 
 static char *simple_c_get_interface_name()
 { return interface_name; }
@@ -96,7 +102,8 @@ static int simple_c_close_interface(z_ucs *UNUSED(error_message))
 static void simple_c_set_buffer_mode(uint8_t UNUSED(new_buffer_mode))
 { }
 
-static void simple_c_interface_output_z_ucs(z_ucs *z_ucs_output)
+static void z_ucs_output_wordwrap_destination(z_ucs *z_ucs_output,
+    void *UNUSED(dummyparameter))
 {
   while (*z_ucs_output != 0)
   {
@@ -109,6 +116,14 @@ static void simple_c_interface_output_z_ucs(z_ucs *z_ucs_output)
   }
 }
 
+static void simple_c_interface_output_z_ucs(z_ucs *z_ucs_output)
+{
+  if (line_length == -1)
+    z_ucs_output_wordwrap_destination(z_ucs_output, NULL);
+  else
+    wordwrap_wrap_z_ucs(output_wordwrapper, z_ucs_output);
+}
+
 static int16_t simple_c_interface_read_line(zscii *dest,
     uint16_t maximum_length, uint16_t UNUSED(tenth_seconds),
     uint32_t UNUSED(verification_routine), uint8_t UNUSED(preloaded_input),
@@ -119,6 +134,9 @@ static int16_t simple_c_interface_read_line(zscii *dest,
   int current_length = 0;
   uint8_t input_size = 0;
   zscii input_zscii;
+
+  if (line_length != -1)
+    wordwrap_flush_output(output_wordwrapper);
 
   if ((input = fgetc(stdin)) == EOF)
     exit(-1);
@@ -148,10 +166,14 @@ static int simple_c_interface_read_char(uint16_t UNUSED(tenth_seconds),
     uint32_t UNUSED(verification_routine), int *UNUSED(tenth_seconds_elapsed))
 {
   int result;
+#ifdef ENABLE_READCHAR_VIA_TERMIOS
+  struct termios org_opts, new_opts;
+#endif // ENABLE_READCHAR_VIA_TERMIOS
+
+  if (line_length != -1)
+    wordwrap_flush_output(output_wordwrapper);
 
 #ifdef ENABLE_READCHAR_VIA_TERMIOS
-
-  struct termios org_opts, new_opts;
 
   tcgetattr(STDIN_FILENO, &org_opts);
   memcpy(&new_opts, &org_opts, sizeof(new_opts));
@@ -299,23 +321,90 @@ struct z_screen_interface simple_c_interface =
 };
 
 
+static void print_syntax()
+{
+  puts("\nUsage: fizmo-console [options] <story-file>\n");
+
+  printf("fizmo-console version %s.\n", interface_version);
+  printf("libfizmo version %s.\n\n", FIZMO_VERSION);
+
+  puts("Valid options are:");
+  puts(" -ll, --line-length: Wrap words into lines of given length.");
+  puts(" -dh, --disable-hyphenation: Disable hyphenation.");
+  puts(" -h,  --help: Show help message and exit.\n");
+}
+
+
 int main(int argc, char *argv[])
 {
   z_file *story_stream;
+  char *story_filename = NULL;
+  int i;
+
 #ifdef ENABLE_TRACING
   turn_on_trace();
 #endif // ENABLE_TRACING
 
   fizmo_register_screen_interface(&simple_c_interface);
 
-  if (argc != 2)
-    exit(1);
+  for (i=1; i<argc; i++)
+  {
+    if ( (strcmp(argv[i], "-h") == 0)
+        || (strcmp(argv[i], "--help") == 0) )
+    {
+      print_syntax();
+      exit(EXIT_SUCCESS);
+    }
+    else if ( (strcmp(argv[i], "-ll") == 0)
+        || (strcmp(argv[i], "--line-length") == 0) )
+    {
+      if (++i == argc)
+      {
+        print_syntax();
+        exit(EXIT_FAILURE);
+      }
+
+      line_length = atoi(argv[i]);
+    }
+    else if ( (strcmp(argv[i], "-dh") == 0)
+        || (strcmp(argv[i], "--disable-hyphenation") == 0) )
+    {
+      disable_hyphenation = true;
+    }
+    else
+    {
+      if (story_filename != NULL)
+      {
+        print_syntax();
+        exit(EXIT_FAILURE);
+      }
+      story_filename = argv[i];
+    }
+  }
+
+  if (story_filename == NULL)
+  {
+    print_syntax();
+    exit(EXIT_FAILURE);
+  }
+
+  if (line_length > 0)
+  {
+    output_wordwrapper = wordwrap_new_wrapper(
+        line_length,
+        &z_ucs_output_wordwrap_destination,
+        (void*)NULL,
+        true,
+        0,
+        false,
+        disable_hyphenation == false ? true : false);
+  }
 
   if ((story_stream
-      = fsi->openfile(argv[1], FILETYPE_DATA, FILEACCESS_READ)) == NULL)
+      = fsi->openfile(story_filename, FILETYPE_DATA, FILEACCESS_READ)) == NULL)
   {
     printf("Could not open file \"%s\".\n", argv[1]);
-    return 1;
+    return -1;
   }
   else
   {
