@@ -1,8 +1,7 @@
-.TH FIZMO 6 "29 August 2011" "0.7.0-beta"
+.TH FIZMO-CONSOLE 6 "30 August 2011" "0.7.0-beta"
 .SH NAME
 fizmo-console
-- Z-Machine Interpreter
-- \[lq]\fBF\fPimzo \fBi\fPnterprets \fBZ\fP-\fBm\fPachine \fBo\fPpcodes\[rq]
+- bare-bone console implementation of the fizmo Z-Maschine Interpreter.
 
 .SH SYNOPSIS
 .B fizmo-console
@@ -10,11 +9,13 @@ fizmo-console
 .I storyfile
 
 .SH DESCRIPTION
-.B Fizmo
-is a Z-Machine interpreter, which means that it runs most of the interactive
-fiction games aka text adventures written by Infocom or other games which
-are based on the Z-Machine. Currently all versions except version 6 are
-supported.
+.B fizmo-console
+is a frontend for the fizmo Z-Machine interpreter\[em]\[lq]\fBF\fPimzo
+\fBi\fPnterprets \fBZ\fP-\fBm\fPachine \fBo\fPpcodes\[rq]\[em]which uses
+only the basic console output and input methods. It will run most of the
+interactive fiction games aka text adventures written by Infocom or other
+games which are based on the Z-Machine\[em]currently all versions except
+version 6 are supported.
 
 .SH OPTIONS
 .TP
@@ -52,6 +53,7 @@ Galen Hazelwood
 and
 David Griffith.
 .SS People helping with bug fixes, extensions, packaging, translations and more
+in alphabetical order:
 Andrew Plotkin,
 David Leverton,
 Eric Forgeot,
@@ -60,10 +62,12 @@ Lewis Gentry,
 Michael Dunlap,
 Pattrick Matth\(:ai,
 Samuel Verschelde, 
-Zachary Kline.
+Zachary Kline
+and the people at MacPorts.
 
 
 .SH SEE ALSO
+.BR fizmo-ncursesw(6),
 .BR frotz(6),
 .BR xzip(6),
 .BR jzip(6),
@@ -73,6 +77,6 @@ Zachary Kline.
 Fizmo was written in 2005\[en]2011 by Christoph Ender.
 
 .SH BUGS
-Fizmo is still in beta stage and will probably still contain some bugs.
+Fizmo is in beta stage and will probably still have some bugs.
 If you stumble upon one, please send an e-mail to fizmo@spellbreaker.org.
 
