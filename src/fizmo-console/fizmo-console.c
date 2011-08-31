@@ -33,9 +33,10 @@
 #ifdef ENABLE_READCHAR_VIA_TERMIOS
 #include <termios.h>
 #include <unistd.h>
-#include <string.h>
 #include <stdlib.h>
 #endif // ENABLE_READCHAR_VIA_TERMIOS
+
+#include <string.h>
 
 #include <interpreter/fizmo.h>
 #include <interpreter/text.h>
@@ -91,13 +92,12 @@ static char **simple_c_get_config_option_names()
 { return NULL; }
 
 static void simple_c_link_interface_to_story(struct z_story *UNUSED(story))
-{ }
+{
+  putc('\n', stdout);
+}
 
 static void simple_c_reset_interface()
 { }
-
-static int simple_c_close_interface(z_ucs *UNUSED(error_message))
-{ return 0; }
 
 static void simple_c_set_buffer_mode(uint8_t UNUSED(new_buffer_mode))
 { }
@@ -122,6 +122,13 @@ static void simple_c_interface_output_z_ucs(z_ucs *z_ucs_output)
     z_ucs_output_wordwrap_destination(z_ucs_output, NULL);
   else
     wordwrap_wrap_z_ucs(output_wordwrapper, z_ucs_output);
+}
+
+static int simple_c_close_interface(z_ucs *error_message)
+{
+  if (error_message != NULL)
+    simple_c_interface_output_z_ucs(error_message);
+  return 0;
 }
 
 static int16_t simple_c_interface_read_line(zscii *dest,
@@ -394,7 +401,11 @@ int main(int argc, char *argv[])
         line_length,
         &z_ucs_output_wordwrap_destination,
         (void*)NULL,
+#if defined (__WIN32__)
+        false,
+#else
         true,
+#endif // defined (__WIN32__)
         0,
         false,
         disable_hyphenation == false ? true : false);
