@@ -10,7 +10,7 @@ INSTALL_PREFIX = /opt/local
 endif
 
 # Uncomment to install binaries to $(INSTALL_PREFIX)/$(FIZMO_BIN_DIR).
-#FIZMO_BIN_DIR = bin
+FIZMO_BIN_DIR = bin
 
 
 # -----
