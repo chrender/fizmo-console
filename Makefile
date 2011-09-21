@@ -21,7 +21,7 @@ install: src/fizmo-console/fizmo-console
 	cp src/fizmo-console/fizmo-console \
 	   "$(INSTALL_PREFIX)/$(INSTALL_BIN_DIR)"
 	mkdir -p "$(INSTALL_PREFIX)"/share/man/man6
-	cp src/man/fizmo-console.6 "$(INSTALL_PREFIX)"/man/man6
+	cp src/man/fizmo-console.6 "$(INSTALL_PREFIX)"/share/man/man6
 
 clean:
 	cd src/fizmo-console ; make clean
