@@ -11,4 +11,5 @@ localedir = $(datarootdir)/fizmo/locales
 # PKGFILE = $(PKG_DIR)/libfizmo.pc
 
 SUBDIRS = src/fizmo-console
+man6_MANS = src/man/fizmo-console.6
 
