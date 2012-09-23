@@ -23,7 +23,7 @@ PKG_CHECK_MODULES([libfizmo], [libfizmo >= 0.7.4])
 AM_CONDITIONAL([ENABLE_TRACING],
                 [test "$enable_tracing" = "yes"])
 
-include(config-conds.m4)
+m4_include(config-conds.m4)
 
 AC_CONFIG_FILES([Makefile src/fizmo-console/Makefile])
 AC_OUTPUT
