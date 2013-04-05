@@ -48,7 +48,7 @@
 #include <tools/tracelog.h>
 
 static char* interface_name = "fizmo-console";
-static char* interface_version = "0.7.5";
+static char* interface_version = "0.7.6";
 int line_length = -1;
 bool disable_hyphenation = false;
 static WORDWRAP *output_wordwrapper = NULL;
@@ -192,7 +192,7 @@ static int simple_c_interface_read_char(uint16_t UNUSED(tenth_seconds),
   tcgetattr(STDIN_FILENO, &org_opts);
   memcpy(&new_opts, &org_opts, sizeof(new_opts));
   new_opts.c_lflag
-    &= ~(ICANON | ECHO | ECHOE | ECHOK | ECHONL | ECHOPRT | ECHOKE | ICRNL);
+    &= ~(ICANON | ECHO | ECHOE | ECHOK | ECHONL | ECHOKE | ICRNL);
   tcsetattr(STDIN_FILENO, TCSANOW, &new_opts);
   result = getchar();
   result = unicode_char_to_zscii_input_char(result & 0xff);

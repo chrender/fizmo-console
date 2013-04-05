@@ -1,6 +1,9 @@
 
+   Version 0.7.6
+ - Removed non-POSIX-flag ECHOPRT from tcsetattr for readchar opcode.
+ 
    Version 0.7.5
- + 0.7.4 was finished at about Fri Nov 30 14:02:28 CET 2012.
+ + 0.7.5 was finished at about Fri Nov 30 14:02:28 CET 2012.
  - Fixed include statement in "configure.ac".
  - Updates for manpage, docs, comments.
 
