@@ -435,7 +435,7 @@ int main(int argc, char *argv[])
   }
   else
   {
-    fizmo_start(story_stream, NULL, NULL, -1, -1);
+    fizmo_start(story_stream, NULL, NULL);
   }
 
 #ifdef ENABLE_TRACING
