@@ -48,7 +48,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CC
 AC_PROG_RANLIB
 
-PKG_CHECK_MODULES([libfizmo], [libfizmo >= 0.7.5])
+PKG_CHECK_MODULES([libfizmo], [libfizmo >= 0.7.7])
 
 AM_CONDITIONAL([ENABLE_TRACING],
                 [test "$enable_tracing" = "yes"])
