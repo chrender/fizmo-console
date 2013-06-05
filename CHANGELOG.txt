@@ -1,5 +1,6 @@
 
    Version 0.7.6
+ + 0.7.6 was finished at about Wed Jun 5 18:49:00 CEST 2013.
  - Removed non-POSIX-flag ECHOPRT from tcsetattr for readchar opcode.
  - Adapted to libfizmo's new "fizmo_register_screen_interface" and
    "fizmo_start" functions.
