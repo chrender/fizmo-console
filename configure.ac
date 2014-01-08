@@ -3,7 +3,7 @@
 #
 # This file is part of fizmo.
 #
-# Copyright (c) 2009-2013 Christoph Ender.
+# Copyright (c) 2009-2014 Christoph Ender.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ AC_ARG_ENABLE([readchar-via-termios],
  [],
  [enable_readchar_via_termios=yes])
 
-AC_INIT([fizmo-console], [0.7.6])
+AC_INIT([fizmo-console], [0.7.7])
 
 AC_CONFIG_AUX_DIR([.])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])

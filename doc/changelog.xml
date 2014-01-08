@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <changelog>
+  <change version="0.7.7">
+    <logentry>Added missing license/copyright information.</logentry>
+  </change>
+
   <change version="0.7.6">
     <datetime day-of-week="Wed" month="Jun" day="5" hour="18"
       minute="49" second="00" timezone="CEST" year="2013"/>

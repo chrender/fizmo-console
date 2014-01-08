@@ -1,6 +1,13 @@
 
 
 
+   **Version 0.7.7**
+
+ - Added missing license/copyright information.
+
+---
+
+
    **Version 0.7.6 —  5, 2013**
 
  - Removed non-POSIX-flag ECHOPRT from tcsetattr for readchar opcode.
