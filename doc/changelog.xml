@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <changelog>
   <change version="0.7.7">
+    <datetime day-of-week="Mon" month="3" day="3" hour="21"
+      minute="50" second="0" timezone="CET" year="2014"/>
     <logentry>Added missing license/copyright information.</logentry>
   </change>
 
   <change version="0.7.6">
-    <datetime day-of-week="Wed" month="Jun" day="5" hour="18"
+    <datetime day-of-week="Wed" month="6" day="5" hour="18"
       minute="49" second="00" timezone="CEST" year="2013"/>
     <logentry>Removed non-POSIX-flag ECHOPRT from tcsetattr for readchar opcode.</logentry>
     <logentry>Adapted to libfizmo's new “fizmo_register_screen_interface” and “fizmo_start” functions.</logentry>
   </change>
 
   <change version="0.7.5">
-    <datetime day-of-week="Fri" month="Nov" day="30" hour="14"
+    <datetime day-of-week="Fri" month="11" day="30" hour="14"
       minute="02" second="28" timezone="CET" year="2012"/>
     <logentry>Fixed include statement in “configure.ac”.</logentry>
     <logentry>Updates for manpage, docs, comments.</logentry>
   </change>
 
   <change version="0.7.4">
-    <datetime day-of-week="Mon" month="Sep" day="17" hour="22"
+    <datetime day-of-week="Mon" month="9" day="17" hour="22"
       minute="14" second="52" timezone="CEST" year="2012"/>
     <logentry>Adapted to new autoconf/automake build system.</logentry>
   </change>
 
   <change version="0.7.3">
-    <datetime day-of-week="Wed" month="Aug" day="1" hour="21"
+    <datetime day-of-week="Wed" month="8" day="1" hour="21"
       minute="42" second="17" timezone="CEST" year="2012"/>
     <logentry>Adapted to new fizmo screen-interface.</logentry>
   </change>
 
   <change version="0.7.2">
-    <datetime day-of-week="Fri" month="Mar" day="9" hour="21"
+    <datetime day-of-week="Fri" month="3" day="9" hour="21"
       minute="01" second="12" timezone="CET" year="2012"/>
     <logentry>Fixed missing $(DESTDIR) variable – should already have been present since version 0.7.1.</logentry>
   </change>
 
   <change version="0.7.1">
-    <datetime day-of-week="Sun" month="Nov" day="6" hour="22"
+    <datetime day-of-week="Sun" month="11" day="6" hour="22"
       minute="44" second="17" timezone="CET" year="2011"/>
     <logentry>Fixed missing “override” statments for CFLAGS in Makefiles.</logentry>
     <logentry>Fixed $(DESTDIR) evaluation in config.[default|macports].mk.</logentry>
@@ -47,33 +49,33 @@
   </change>
 
   <change version="0.7.0">
-    <datetime day-of-week="Sun" month="Sep" day="18" hour="08"
+    <datetime day-of-week="Sun" month="9" day="18" hour="08"
       minute="41" second="18" timezone="CEST" year="2011"/>
     <logentry>The “simple-c” interface has been renamed to “fizmo-console” and is now a stand-alone frontend.</logentry>
     <logentry>Re-implemented the entire build process. Libraries may now be compiled and installed on their own, pkg-config is used whereever possible to ease compilation and installation.</logentry>
   </change>
 
   <change version="0.6.3">
-    <datetime day-of-week="Sun" month="Apr" day="26" hour="08"
+    <datetime day-of-week="Sun" month="4" day="26" hour="08"
       minute="26" second="31" timezone="CEST" year="2009"/>
     <logentry>Added license information to every file.</logentry>
   </change>
 
   <change version="0.6.1">
-    <datetime day-of-week="Mon" month="Mar" day="30" hour="22"
+    <datetime day-of-week="Mon" month="3" day="30" hour="22"
       minute="15" second="04" timezone="CEST" year="2009"/>
     <logentry>Added FIZMO_BIN_DIR variable to Makefile.</logentry>
   </change>
 
   <change version="0.5.3">
-    <datetime day-of-week="Wed" month="Mar" day="11" hour="21"
+    <datetime day-of-week="Wed" month="3" day="11" hour="21"
       minute="34" second="59" timezone="CET" year="2009"/>
     <logentry>Re-wrote Makefile system. Releveant module defaults are now kept in separate .mk-files.</logentry>
     <logentry>Added “-Wextra” flag to CFLAGS and cleaned up new warnings caused by the new flag.</logentry>
   </change>
 
   <change version="0.4.1">
-    <datetime day-of-week="Wed" month="Nov" day="14" hour="08"
+    <datetime day-of-week="Wed" month="11" day="14" hour="08"
       minute="23" second="19" timezone="CET" year="2007"/>
     <logentry>Separated code in core, interface, c and cpp interfaces.</logentry>
   </change>
