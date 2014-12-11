@@ -37,11 +37,15 @@ AC_ARG_ENABLE([tracing],
 
 AC_ARG_ENABLE([readchar-via-termios],
  [AS_HELP_STRING([--disable-readchar-via-termios],
-                 [Don't use termios for read-char])],
+                 [Do not use termios for read-char])],
  [],
  [enable_readchar_via_termios=yes])
 
-AC_INIT([fizmo-console], [0.7.7])
+AC_INIT(
+ [fizmo-console],
+ [0.7.8],
+ fizmo@spellbreaker.org,
+ fizmo-console)
 
 AC_CONFIG_AUX_DIR([.])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
