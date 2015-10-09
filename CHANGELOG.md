@@ -1,7 +1,7 @@
 
 
 
-   **Version 0.7.8 — October 2, 2015**
+   **Version 0.7.8 — October 9, 2015**
 
  - Minor autoconf-related changes for fizmo-dist-0.7.10-compatibility.
 
