@@ -3,7 +3,7 @@
 #
 # This file is part of fizmo.
 #
-# Copyright (c) 2009-2015 Christoph Ender.
+# Copyright (c) 2009-2016 Christoph Ender.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ AC_ARG_ENABLE([readchar-via-termios],
 
 AC_INIT(
  [fizmo-console],
- [0.7.8],
+ [0.7.9],
  fizmo@spellbreaker.org,
  fizmo-console)
 

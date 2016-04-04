@@ -1,6 +1,13 @@
 
 
 
+   **Version 0.7.9**
+
+ - Minor Manpage, copyright and version 0.7.9 update.
+
+---
+
+
    **Version 0.7.8 — October 9, 2015**
 
  - Minor autoconf-related changes for fizmo-dist-0.7.10-compatibility.
