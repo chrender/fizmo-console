@@ -1,7 +1,14 @@
 
 
 
-   **Version 0.7.9**
+   **Version 0.7.10**
+
+ - Use tiny-xml-doc-tools for documentation.
+
+---
+
+
+   **Version 0.7.9 — July 28, 2016**
 
  - Minor Manpage, copyright and version 0.7.9 update.
 
