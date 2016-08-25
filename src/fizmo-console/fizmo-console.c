@@ -349,7 +349,6 @@ static void print_syntax()
   puts("\nUsage: fizmo-console [options] <story-file>\n");
 
   printf("fizmo-console version %s.\n", interface_version);
-  printf("libfizmo version %s.\n\n", FIZMO_VERSION);
 
   puts("Valid options are:");
   puts(" -ll, --line-length: Wrap words into lines of given length.");
