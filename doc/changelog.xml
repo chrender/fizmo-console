@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <changelog>
+  <change version="0.7.11">
+    <datetime day-of-week="Sun" month="10" day="9" hour="9"
+      minute="36" second="40" timezone="CEST" year="2016"/>
+    <logentry>Adapted to new, split-library builds.</logentry>
+  </change>
+
   <change version="0.7.10">
     <datetime day-of-week="Wed" month="8" day="31" hour="22"
       minute="8" second="1" timezone="CEST" year="2016"/>

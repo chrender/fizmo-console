@@ -1,6 +1,13 @@
 
 
 
+   **Version 0.7.11 — October 9, 2016**
+
+ - Adapted to new, split-library builds.
+
+---
+
+
    **Version 0.7.10 — August 31, 2016**
 
  - Use tiny-xml-doc-tools for documentation.

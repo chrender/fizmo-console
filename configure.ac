@@ -43,7 +43,7 @@ AC_ARG_ENABLE([readchar-via-termios],
 
 AC_INIT(
  [fizmo-console],
- [0.7.10],
+ [0.7.11],
  fizmo@spellbreaker.org,
  fizmo-console)
 
@@ -52,7 +52,7 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CC
 AC_PROG_RANLIB
 
-PKG_CHECK_MODULES([libfizmo], [libfizmo >= 0.7.12])
+PKG_CHECK_MODULES([libfizmo], [libfizmo >= 0.7.13])
 
 AM_CONDITIONAL([ENABLE_TRACING],
                 [test "$enable_tracing" = "yes"])
