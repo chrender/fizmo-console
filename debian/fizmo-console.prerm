@@ -1,0 +1,21 @@
+#! /bin/sh
+# prerm script for fizmo-console
+
+set -e
+
+case "$1" in
+    remove|upgrade|deconfigure)
+        update-alternatives --verbose --remove zcode-interpreter /usr/games/fizmo-console-launcher
+        ;;
+    failed-upgrade)
+        update-alternatives --verbose --remove zcode-interpreter /usr/games/fizmo-console-launcher
+        ;;
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 0
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
