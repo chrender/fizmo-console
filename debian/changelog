@@ -1,3 +1,9 @@
+fizmo-console (0.7.11-2) experimental; urgency=low
+
+  * Fixed superfluous dependency and formatting issues.
+
+ -- Christoph Ender <christoph.ender@spellbreaker.org>  Tue, 22 Nov 2016 07:40:00 +0100
+
 fizmo-console (0.7.11-1) experimental; urgency=low
 
   * Initial stand-alone packaging for fizmo-console (Closes: #842618).
@@ -138,4 +144,3 @@ fizmo (0.6.3-1) unstable; urgency=low
   * Initial release (Closes: #525490)
 
  -- Christoph Ender <Christoph.Ender@spellbreaker.org>  Sun, 26 Apr 2009 07:37:58 +0200
-

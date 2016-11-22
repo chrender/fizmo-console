@@ -3,7 +3,6 @@ Section: games
 Priority: extra
 Maintainer: Christoph Ender <christoph.ender@spellbreaker.org>
 Build-Depends: debhelper (>= 9.0.0),
- dpkg-dev (>= 1.16.1~),
  dh-autoreconf,
  automake,
  autoconf,
@@ -23,4 +22,3 @@ Description: Console-based Z-machine interpreter for Infocom/Inform games
  This is a bare-bones console-only frontend for the fizmo interpreter. Useful
  for automated Z-Machine processing or testing. For actual playing of
  Z-Machine games fizmo-ncursesw or fizmo-sdl2 might be more useful.
-
