@@ -1,6 +1,13 @@
 
 
 
+   **Version 0.7.12 — April 9, 2017**
+
+ - Updated man page.
+
+---
+
+
    **Version 0.7.11 — October 9, 2016**
 
  - Adapted to new, split-library builds.
