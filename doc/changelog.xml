@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <changelog>
+  <change version="0.7.13">
+    <logentry>Adapted to updated screen interface, allowing screen dimensions > 255.</logentry>
+  </change>
+
   <change version="0.7.12">
     <datetime day-of-week="Sun" month="4" day="9" hour="20"
       minute="19" second="25" timezone="CEST" year="2017"/>

@@ -48,7 +48,7 @@
 #include <tools/tracelog.h>
 
 static char* interface_name = "fizmo-console";
-static char* interface_version = "0.7.12";
+static char* interface_version = "0.7.13";
 int line_length = -1;
 bool disable_hyphenation = false;
 static WORDWRAP *output_wordwrapper = NULL;
@@ -63,10 +63,10 @@ static bool simple_c_return_false()
 static bool simple_c_return_true()
 { return true; }
 
-static uint8_t simple_c_get_screen_height()
+static uint16_t simple_c_get_screen_height()
 { return 24; }
 
-static uint8_t simple_c_get_screen_width()
+static uint16_t simple_c_get_screen_width()
 { return 80; }
 
 static uint8_t simple_c_return_1()

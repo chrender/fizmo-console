@@ -1,6 +1,13 @@
 
 
 
+   **Version 0.7.13**
+
+ - Adapted to updated screen interface, allowing screen dimensions > 255.
+
+---
+
+
    **Version 0.7.12 — April 9, 2017**
 
  - Updated man page.
