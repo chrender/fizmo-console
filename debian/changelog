@@ -1,3 +1,10 @@
+fizmo-console (0.7.12-2) unstable; urgency=low
+
+  * Switch to unstable.
+  * New standards version 4.0.0.
+
+ -- Christoph Ender <christoph.ender@spellbreaker.org>  Sun, 16 Jul 2017 21:55:00 +0200
+
 fizmo-console (0.7.12-1) experimental; urgency=low
 
   * New upstream version.
