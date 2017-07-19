@@ -3,6 +3,7 @@
 
    **Version 0.7.13**
 
+ - Added “-ai” or “--autosave-inputfile”, resp. and “-ao” or “--autosave-outputfile”, resp. commandline parameters. With both set, this allows processing of a single command from stdin for each invocation of fizmo-console.
  - Adapted to updated screen interface, allowing screen dimensions > 255.
 
 ---
