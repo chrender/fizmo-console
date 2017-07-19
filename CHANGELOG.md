@@ -5,7 +5,7 @@
 
  - Added “-ai” or “--autosave-inputfile”, resp. and “-ao” or “--autosave-outputfile”, resp. commandline parameters. With both set, this allows processing of a single command from stdin for each invocation of fizmo-console.
  - Adapted to updated screen interface, allowing screen dimensions > 255.
- - Renamed copyright files to “license” for github license detection compatibility, see Github's “Licensing a repository” for further reference.
+ - Renamed copyright files to “license” for github license detection compatibility, see [Github's “Licensing a repository”](https://help.github.com/articles/licensing-a-repository/) for further reference.
  - Updated man page.
 
 ---
