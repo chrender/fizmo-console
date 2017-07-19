@@ -1,4 +1,4 @@
-.TH FIZMO-CONSOLE 6 "July 9, 2017" "0.7.13"
+.TH FIZMO-CONSOLE 6 "July 19, 2017" "0.7.13"
 .SH NAME
 fizmo-console
 - bare-bone console implementation of the fizmo Z-Maschine Interpreter.
@@ -29,12 +29,19 @@ using the defined screen size.
 .B -dh, --disable-hyphenation
 Disable word hyphenation. Useful for languages other than the supported
 ones.
+.TP
+.B -ai, --autosave-inputfile
+Restore game from this file.
+.TP
+.B -ao, --autosave-outputfile
+Save to this file after single command.
 
 .SH CREDITS
 .SS ITF \[em] The InfoTaskForce
-All the people who drew up the Z-Machine Specification, in alphabetical order:
+All the people who worked on the Z-Machine Specification, in alphabetical order:
 Chris Tham,
 David Beazley,
+David Fillmore,
 George Janczuk,
 Graham Nelson,
 Mark Howell,
@@ -52,6 +59,9 @@ Stefan Jokisch,
 Galen Hazelwood
 and
 David Griffith.
+.SS Mark Howell
+For the pix2gif code which is used in libdrilbo to parse the infocom .mg1
+image files.
 .SS People helping with bug fixes, extensions, packaging, translations and more
 in alphabetical order:
 Andrew Plotkin,
@@ -60,6 +70,7 @@ Michael Baltes,
 David Batchelder,
 David Leverton,
 Eric Forgeot,
+Jared Reisinger,
 irb,
 Lewis Gentry,
 Michael Dunlap,
