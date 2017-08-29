@@ -1,3 +1,11 @@
+fizmo-console (0.7.13-1) unstable; urgency=low
+
+  * New upstream version.
+  * Updated BSD-3 license to include contributors. License is now to 100%
+    identical to the 3-Clause BSD License.
+
+ -- Christoph Ender <christoph.ender@spellbreaker.org>  Tue, 29 Aug 2017 22:10:00 +0200
+
 fizmo-console (0.7.12-2) unstable; urgency=low
 
   * Switch to unstable.
