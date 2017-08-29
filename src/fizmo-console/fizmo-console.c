@@ -38,6 +38,7 @@
 
 #include <string.h>
 
+#include <interpreter/config.h>
 #include <interpreter/fizmo.h>
 #include <interpreter/text.h>
 #include <interpreter/streams.h>
@@ -48,7 +49,7 @@
 #include <tools/tracelog.h>
 
 static char* interface_name = "fizmo-console";
-static char* interface_version = "0.7.12";
+static char* interface_version = "0.7.13";
 int line_length = -1;
 bool disable_hyphenation = false;
 static WORDWRAP *output_wordwrapper = NULL;
@@ -63,10 +64,10 @@ static bool simple_c_return_false()
 static bool simple_c_return_true()
 { return true; }
 
-static uint8_t simple_c_get_screen_height()
+static uint16_t simple_c_get_screen_height()
 { return 24; }
 
-static uint8_t simple_c_get_screen_width()
+static uint16_t simple_c_get_screen_width()
 { return 80; }
 
 static uint8_t simple_c_return_1()
@@ -353,14 +354,17 @@ static void print_syntax()
   puts("Valid options are:");
   puts(" -ll, --line-length: Wrap words into lines of given length.");
   puts(" -dh, --disable-hyphenation: Disable hyphenation.");
+  puts(" -ai, --autosave-inputfile: Restore game from this file.");
+  puts(" -ao, --autosave-outputfile: Save to this file after single command.");
   puts(" -h,  --help: Show help message and exit.\n");
 }
 
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
   z_file *story_stream;
+  z_file *restore_on_start_file = NULL;
   char *story_filename = NULL;
+  char *restore_on_start_filename = NULL;
   int i;
 
 #ifdef ENABLE_TRACING
@@ -369,34 +373,54 @@ int main(int argc, char *argv[])
 
   fizmo_register_screen_interface(&simple_c_interface);
 
-  for (i=1; i<argc; i++)
-  {
+  for (i=1; i<argc; i++) {
+
     if ( (strcmp(argv[i], "-h") == 0)
-        || (strcmp(argv[i], "--help") == 0) )
-    {
+        || (strcmp(argv[i], "--help") == 0) ) {
       print_syntax();
       exit(EXIT_SUCCESS);
     }
+
     else if ( (strcmp(argv[i], "-ll") == 0)
-        || (strcmp(argv[i], "--line-length") == 0) )
-    {
-      if (++i == argc)
-      {
+        || (strcmp(argv[i], "--line-length") == 0) ) {
+      if (++i == argc) {
         print_syntax();
         exit(EXIT_FAILURE);
       }
 
       line_length = atoi(argv[i]);
     }
+
     else if ( (strcmp(argv[i], "-dh") == 0)
-        || (strcmp(argv[i], "--disable-hyphenation") == 0) )
-    {
+        || (strcmp(argv[i], "--disable-hyphenation") == 0) ) {
       disable_hyphenation = true;
     }
-    else
-    {
-      if (story_filename != NULL)
-      {
+
+    else if ((strcmp(argv[i], "-ai") == 0)
+        || (strcmp(argv[i], "--autosave-inputfile") == 0)) {
+      if (++i == argc) {
+        print_syntax();
+        exit(EXIT_FAILURE);
+      }
+      restore_on_start_filename = argv[i];
+      set_configuration_value(
+          "restore-after-save-and-quit-file-before-read", "true");
+    }
+
+    else if ((strcmp(argv[i], "-ao") == 0)
+        || (strcmp(argv[i], "--autosave-outputfile") == 0)) {
+      if (++i == argc) {
+        print_syntax();
+        exit(EXIT_FAILURE);
+      }
+      set_configuration_value(
+          "autosave-filename", argv[i]);
+      set_configuration_value(
+          "save-and-quit-file-before-read", "true");
+    }
+
+    else {
+      if (story_filename != NULL) {
         print_syntax();
         exit(EXIT_FAILURE);
       }
@@ -404,14 +428,12 @@ int main(int argc, char *argv[])
     }
   }
 
-  if (story_filename == NULL)
-  {
+  if (story_filename == NULL) {
     print_syntax();
     exit(EXIT_FAILURE);
   }
 
-  if (line_length > 0)
-  {
+  if (line_length > 0) {
     output_wordwrapper = wordwrap_new_wrapper(
         line_length,
         &z_ucs_output_wordwrap_destination,
@@ -426,15 +448,17 @@ int main(int argc, char *argv[])
         disable_hyphenation == false ? true : false);
   }
 
+  if ((restore_on_start_file = fsi->openfile(
+          restore_on_start_filename, FILETYPE_DATA, FILEACCESS_READ)) != NULL) {
+  }
+
   if ((story_stream = fsi->openfile(
-          story_filename, FILETYPE_DATA, FILEACCESS_READ)) == NULL)
-  {
+          story_filename, FILETYPE_DATA, FILEACCESS_READ)) == NULL) {
     printf("Could not open file \"%s\".\n", argv[1]);
     return -1;
   }
-  else
-  {
-    fizmo_start(story_stream, NULL, NULL);
+  else {
+    fizmo_start(story_stream, NULL, restore_on_start_file);
   }
 
 #ifdef ENABLE_TRACING
