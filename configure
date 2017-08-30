@@ -3685,8 +3685,6 @@ $as_echo "no" >&6; }
 		PKG_CONFIG=""
 	fi
 fi
-_save_PKG_CONFIG=$PKG_CONFIG
-PKG_CONFIG="$PKG_CONFIG --static"
 
 pkg_failed=no
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for libfizmo" >&5
@@ -3778,7 +3776,6 @@ else
 $as_echo "yes" >&6; }
 
 fi
-PKG_CONFIG=$_save_PKG_CONFIG
 
  if test "$enable_tracing" = "yes"; then
   ENABLE_TRACING_TRUE=
