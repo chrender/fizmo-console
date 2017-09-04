@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <changelog>
   <change version="0.7.13">
-    <datetime day-of-week="Mon" month="8" day="14" hour="22"
-      minute="29" second="32" timezone="CEST" year="2017"/>
+    <datetime day-of-week="Sun" month="9" day="3" hour="21"
+      minute="45" second="23" timezone="CEST" year="2017"/>
     <logentry>Added “-ai” or “--autosave-inputfile”, resp. and “-ao” or “--autosave-outputfile”, resp. commandline parameters. With both set, this allows processing of a single command from stdin for each invocation of fizmo-console.</logentry>
     <logentry>Adapted to updated screen interface, allowing screen dimensions > 255.</logentry>
     <logentry>Renamed copyright files to “license” for github license detection compatibility, see <a href="https://help.github.com/articles/licensing-a-repository/">Github's “Licensing a repository”</a> for further reference.</logentry>
+    <logentry>Added missing contributor phrasing to BSD-3 clause. The resulting license now exactly matches the wording used on Github and so also makes the license detection work.</logentry>
     <logentry>Updated man page.</logentry>
   </change>
 
