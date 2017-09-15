@@ -1,3 +1,13 @@
+fizmo-console (0.7.13-3) unstable; urgency=low
+
+  * Made build require at least version 0.7.15 of libfizmo-dev due to
+    build process changes.
+  * Made fizmo-console require at least version 0.7.14 of libfizmo-common
+    due to requirement of en_GB instead of the en_US hyphenation patterns.
+  * Removed "Vcs-Git" field from control file.
+
+ -- Christoph Ender <christoph.ender@spellbreaker.org>  Thu, 14 Sep 2017 22:15:00 +0200
+
 fizmo-console (0.7.13-2) unstable; urgency=low
 
   * Switched priority from "extra" to "optional".

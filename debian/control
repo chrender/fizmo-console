@@ -7,15 +7,15 @@ Build-Depends: debhelper (>= 9.0.0),
  automake,
  autoconf,
  pkg-config,
- libfizmo-dev
+ libxml2-dev,
+ libfizmo-dev (>= 0.7.15)
 Standards-Version: 4.1.0
 Homepage: https://fizmo.spellbreaker.org/
 Vcs-Browser: https://github.com/chrender/fizmo-console
-Vcs-Git: https://github.com/chrender/fizmo-console
 
 Package: fizmo-console
 Architecture: any
-Depends: libfizmo-common,
+Depends: libfizmo-common (>= 0.7.14),
  ${misc:Depends},
  ${shlibs:Depends}
 Provides: fizmo,
