@@ -45,7 +45,7 @@ AC_ARG_ENABLE([readchar-via-termios],
 
 AC_INIT(
  [fizmo-console],
- [0.7.13],
+ [0.7.14],
  fizmo@spellbreaker.org,
  fizmo-console)
 

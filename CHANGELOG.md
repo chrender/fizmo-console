@@ -1,6 +1,13 @@
 
 
 
+   **Version 0.7.14 — Febuary 23, 2019**
+
+ - Fixed underscores in markdown files.
+
+---
+
+
    **Version 0.7.13 — September 3, 2017**
 
  - Added “-ai” or “--autosave-inputfile”, resp. and “-ao” or “--autosave-outputfile”, resp. commandline parameters. With both set, this allows processing of a single command from stdin for each invocation of fizmo-console.
@@ -57,7 +64,7 @@
    **Version 0.7.6 — June 5, 2013**
 
  - Removed non-POSIX-flag ECHOPRT from tcsetattr for readchar opcode.
- - Adapted to libfizmo's new “fizmo_register_screen_interface” and “fizmo_start” functions.
+ - Adapted to libfizmo's new “fizmo\_register\_screen\_interface” and “fizmo\_start” functions.
 
 ---
 
@@ -96,8 +103,8 @@
  - Fixed missing “override” statments for CFLAGS in Makefiles.
  - Fixed $(DESTDIR) evaluation in config.[default|macports].mk.
  - Changed manpage install dir from “man” to “share/man”.
- - Adapted Makefiles and configuration to use standard GNU Makefile variables instead of INSTALL_PATH and FIZMO_BIN_DIR.
- - Respect LD_FLAGS for linking.
+ - Adapted Makefiles and configuration to use standard GNU Makefile variables instead of INSTALL\_PATH and FIZMO\_BIN\_DIR.
+ - Respect LD\_FLAGS for linking.
 
 ---
 
@@ -119,7 +126,7 @@
 
    **Version 0.6.1 — March 30, 2009**
 
- - Added FIZMO_BIN_DIR variable to Makefile.
+ - Added FIZMO\_BIN\_DIR variable to Makefile.
 
 ---
 

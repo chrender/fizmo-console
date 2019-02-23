@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <changelog>
+  <change version="0.7.14">
+    <datetime day-of-week="Sat" month="2" day="23" hour="23"
+      minute="5" second="36" timezone="CET" year="2019"/>
+    <logentry>Fixed underscores in markdown files.</logentry>
+  </change>
+
   <change version="0.7.13">
     <datetime day-of-week="Sun" month="9" day="3" hour="21"
       minute="45" second="23" timezone="CEST" year="2017"/>
