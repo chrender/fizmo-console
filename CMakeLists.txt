@@ -11,7 +11,14 @@ project(fizmo-console
   VERSION 0.8.0)
 
 option(ENABLE_TRACING "Enable tracing" OFF)
+if (ENABLE_TRACING)
+  add_definitions(-DENABLE_TRACING)
+endif()
+
 option(ENABLE_READCHAR_VIA_TERMIOS "Enable readchar via termios" ON)
+if (ENABLE_READCHAR_VIA_TERMIOS)
+  add_definitions(-DENABLE_READCHAR_VIA_TERMIOS)
+endif()
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(LIBFIZMO REQUIRED libfizmo>=0.8.0)
