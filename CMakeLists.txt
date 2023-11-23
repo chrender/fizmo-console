@@ -8,7 +8,7 @@ project(fizmo-console
   LANGUAGES C
   HOMEPAGE_URL https://fizmo.spellbreaker.org
   DESCRIPTION "fizmo console frontend"
-  VERSION 0.8.0)
+  VERSION 0.9.0)
 
 option(ENABLE_TRACING "Enable tracing" OFF)
 if (ENABLE_TRACING)
@@ -21,7 +21,7 @@ if (ENABLE_READCHAR_VIA_TERMIOS)
 endif()
 
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(LIBFIZMO REQUIRED libfizmo>=0.8.0)
+pkg_check_modules(LIBFIZMO REQUIRED libfizmo>=0.9.0)
 
 include_directories(${LIBFIZMO_INCLUDE_DIRS})
 

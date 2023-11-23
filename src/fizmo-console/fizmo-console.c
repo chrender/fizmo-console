@@ -51,7 +51,7 @@
 #include <tools/tracelog.h>
 
 static char* interface_name = "fizmo-console";
-static char* interface_version = "0.7.14";
+static char* interface_version = "0.9.0-beta1";
 int line_length = -1;
 bool disable_hyphenation = false;
 static WORDWRAP *output_wordwrapper = NULL;
